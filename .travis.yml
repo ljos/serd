@@ -11,11 +11,11 @@ env:
   - DEBUG=""
   - DEBUG="--debug"
 matrix:
-  exclude
-  - os: osx
-    env: STATIC="--static --static-progs --no-shared"
-  - os: osx
-    compiler: gcc
+  exclude:
+    - os: osx
+      env: STATIC="--static --static-progs --no-shared"
+    - os: osx
+      compiler: gcc
 script:
   - ./waf configure --test --no-coverage --strict $DEBUG $STATIC
   - ./waf build
