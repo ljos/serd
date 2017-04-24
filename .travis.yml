@@ -6,10 +6,9 @@ os:
   - linux
   - osx
 env:
-  - STATIC=""
   - STATIC="--static --static-progs --no-shared"
-  - DEBUG=""
   - DEBUG="--debug"
+  - DEBUG=""
 matrix:
   exclude:
     - os: osx
