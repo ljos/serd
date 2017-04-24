@@ -6,11 +6,11 @@ os:
   - linux
   - osx
 env:
-  - DEBUG="--debug"
-  - DEBUG=""
-  - STATIC="--static --static-progs --no-shared"
-  - STATIC=""
+  - FLAGS="--debug"
+  - FLAGS="--debug --static --static-progs --no-shared"
+  - FLAGS=""
+  - FLAGS="--static --static-progs --no-shared"
 script:
-  - ./waf configure --test --no-coverage --strict $DEBUG $STATIC
+  - ./waf configure --test --no-coverage --strict $FLAGS
   - ./waf build
   - ./waf test
