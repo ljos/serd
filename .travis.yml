@@ -6,11 +6,17 @@ os:
   - linux
   - osx
 env:
-  - FLAGS="--debug"
-  - FLAGS="--debug --static --static-progs --no-shared"
-  - FLAGS=""
-  - FLAGS="--static --static-progs --no-shared"
+  - STATIC=""
+  - STATIC="--static --static-progs --no-shared"
+  - DEBUG=""
+  - DEBUG="--debug"
+matrix:
+  exclude
+  - os: osx
+    env: STATIC="--static --static-progs --no-shared"
+  - os: osx
+    compiler: gcc
 script:
-  - ./waf configure --test --no-coverage --strict $FLAGS
+  - ./waf configure --test --no-coverage --strict $DEBUG $STATIC
   - ./waf build
   - ./waf test
