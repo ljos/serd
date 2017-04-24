@@ -2,7 +2,15 @@ language: c
 compiler:
   - clang
   - gcc
+os:
+  - linux
+  - osx
+env:
+  - DEBUG="--debug"
+  - DEBUG=""
+  - STATIC="--static --static-progs --no-shared"
+  - STATIC=""
 script:
-  - ./waf configure --test
+  - ./waf configure --test --no-coverage --strict $DEBUG $STATIC
   - ./waf build
   - ./waf test
